@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gestión personas</title>
     <link rel="stylesheet" href="../static/css/bootstrap-grid.min.css" th:href="@{/css/bootstrap.css}">
 </head>
+
 <body>
-	<div class="container">
-	    <br>
-	    <div><a href="/save/0" class="btn btn-primary">Nuevo</a></div>
-	    <h2 th:if="${list.isEmpty()}">Aún no hay registros</h2>
-	    <div th:if="${!list.isEmpty()}">
-	        <h2>Personas</h2>
-	        <table class="table">
-	            <thead>
-	            	<tr>
-			            <th>Nombre</th>
-			            <th>Apellido</th>
-			            <th>Dirección</th>
-			            <th>Teléfono</th>
-			            <th>Teléfono</th>
-			            <th>Teléfono</th>
-		            </tr>
-	            </thead>
-	            <tbody>
-		            <tr th:each="persona:${list}">
-		                <td th:text="${persona.nombre}"></td>
-		                <td th:text="${persona.apellido}"></td>
-		                <td th:text="${persona.direccion}"></td>
-		                <td th:text="${persona.telefono}"></td>
-		                <td>
-		                	<a th:href="@{/delete/{id}(id=${persona.id})}">Eliminar</a>
-		                </td>
-		                <td>
-		               		<a th:href="@{/save/{id}(id=${persona.id})}">Editar</a>
-		                </td>
-		            </tr>
-	            </tbody>
-	        </table>
-	    </div>
-	</div>
+    <div class="container">
+        <br>
+        <div><a href="/save/0" class="btn btn-primary">Nuevo</a></div>
+        <h2 th:if="${list.isEmpty()}">Aún no hay registros</h2>
+        <div th:if="${!list.isEmpty()}">
+            <h2>Personas</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Dirección</th>
+                        <th>Teléfono</th>
+                        <th>Eliminar</th>
+                        <th>Editar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="persona:${list}">
+                        <td th:text="${persona.nombre}"></td>
+                        <td th:text="${persona.apellido}"></td>
+                        <td th:text="${persona.direccion}"></td>
+                        <td th:text="${persona.telefono}"></td>
+                        <td>
+                            <a th:href="@{/delete/{id}(id=${persona.id})}">Eliminar</a>
+                        </td>
+                        <td>
+                            <a th:href="@{/save/{id}(id=${persona.id})}">Editar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
+
 </html>
