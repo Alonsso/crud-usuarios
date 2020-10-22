@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gestión Libros</title>
+    <link rel="stylesheet" href="../static/css/bootstrap-grid.min.css" th:href="@{/css/bootstrap.css}">
+</head>
+
+<body>
+    <div class="container">
+        <br>
+        <div><a href="/saveLibro/0" class="btn btn-primary">Nuevo</a> <a href="/" class="btn btn-secondary">Atras</a></div>
+
+        <h2 th:if="${list.isEmpty()}">Aún no hay registros</h2>
+        <div th:if="${!list.isEmpty()}">
+            <h2>Libros</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre Libro</th>
+                        <th>Autor</th>
+                        <th>Editorial</th>
+                        <th>Año de Publicación</th>
+                        <th>Eliminar</th>
+                        <th>Editar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="libro:${list}">
+                        <td th:text="${libro.nom_libro}"></td>
+                        <td th:text="${libro.autor}"></td>
+                        <td th:text="${libro.editorial}"></td>
+                        <td th:text="${libro.ano_pub}"></td>
+                        <td>
+                            <a th:href="@{/deleteLibro/{id}(id=${libro.id})}">Eliminar</a>
+                        </td>
+                        <td>
+                            <a th:href="@{/saveLibro/{id}(id=${libro.id})}">Editar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
