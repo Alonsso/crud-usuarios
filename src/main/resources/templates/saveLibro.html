@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gestión Libros</title>
+    <link rel="stylesheet" href="../static/css/bootstrap-grid.min.css" th:href="@{/css/bootstrap.css}">
+</head>
+
+<body>
+    <div class="container">
+        <form action="#" th:action="@{/saveLibro}" th:object="${libro}" method="POST">
+            <div class="form-group">
+                <input type="hidden" id="id" th:field="*{id}">
+                <label for="nom_libro">Nombre Libro</label>
+                <input type="text" class="form-control" id="nom_libro" th:field="*{nom_libro}" name="nom_libro">
+                <label for="autor">Autor</label>
+                <input type="text" class="form-control" id="autor" th:field="*{autor}" name="autor">
+                <label for="editorial">Editorial</label>
+                <input type="text" class="form-control" id="editorial" th:field="*{editorial}" name="editorial">
+                <label for="ano_pub">Año de Publicación</label>
+                <input type="text" class="form-control" id="ano_pub" th:field="*{ano_pub}" name="ano_pub">
+            </div>
+            <button type="submit" class="btn btn-success">Guardar</button>
+        </form>
+    </div>
+</body>
+
+</html>
